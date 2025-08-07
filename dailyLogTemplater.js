@@ -101,11 +101,20 @@ if (firstPick === "Medication") {
     const medChoice = await tp.system.suggester(meds, meds);
     let entry = medChoice;
     if (!Array.isArray(medGroup)) {
-      const qtyInput = await tp.system.prompt("Quantity (dec / fraction)", "1");
-      const qty = parseQty(qtyInput);
-      if (qty !== 1 && !isNaN(qty) && qty !== 0) {
-        const { dose, unit } = medGroup[medChoice];
-        entry = `${medChoice} (${dose} x ${qty} ${unit})`;
+      const info = medGroup[medChoice];
+      if (info && Array.isArray(info.Formulations)) {
+        const formChoice = await tp.system.suggester(info.Formulations, info.Formulations);
+        const qtyInput = await tp.system.prompt("Quantity (dec / fraction)", "1");
+        const qty = parseQty(qtyInput);
+        const qtyPart = (qty !== 1 && !isNaN(qty) && qty !== 0) ? ` x ${qty}` : "";
+        entry = `${medChoice} (${formChoice}${qtyPart})`;
+      } else {
+        const qtyInput = await tp.system.prompt("Quantity (dec / fraction)", "1");
+        const qty = parseQty(qtyInput);
+        if (qty !== 1 && !isNaN(qty) && qty !== 0) {
+          const { dose, unit } = info;
+          entry = `${medChoice} (${dose} x ${qty} ${unit})`;
+        }
       }
     }
     selected.push(entry);
