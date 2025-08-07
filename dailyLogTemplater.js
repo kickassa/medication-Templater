@@ -81,7 +81,6 @@ let noteContent   = tp.file.content;
 /* ------------------------------------------------
    4) Build menu hierarchy
 ------------------------------------------------ */
-const otherLogItems = logItems.filter(l => l !== "Sleep Session");
 const mainMenu = ["Medication", "Sleep Session", "Other Logs"];
 const firstPick = await tp.system.suggester(mainMenu, mainMenu);
 
@@ -166,8 +165,8 @@ if (firstPick === "Sleep Session") {
    7) Other Logs sub‑menu
 ------------------------------------------------ */
 if (firstPick === "Other Logs") {
-  if (!otherLogItems.length) throw new Error("No custom log items defined.");
-  const pick = await tp.system.suggester(otherLogItems, otherLogItems);
+  if (!logItems.length) throw new Error("No custom log items defined.");
+  const pick = await tp.system.suggester(logItems, logItems);
   ensureTodaysHeading();
   noteContent = noteContent.replace(/\n+$/, "\n\n");
   const nowRaw = tp.date.now("HH:mm");
