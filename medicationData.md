@@ -1,71 +1,19 @@
 ```json
 {
   "medDefaults": {
-    "TEVA TRAZODONE 50MG": { "dose": "50mg", "unit": "tablets" },
-    "APO-MIRTAZAPINE 15MG": { "dose": "15mg", "unit": "tablets" },
-    "MINT-CLONIDINE 0.025MG": { "dose": "0.025mg", "unit": "tablets" },
-    "SILENOR 6MG": { "dose": "6mg", "unit": "tablets" },
-    "SILENOR 3MG": { "dose": "3mg", "unit": "tablets" },
     "TRINTELLIX 5MG": { "dose": "5mg", "unit": "tablets" },
     "TRINTELLIX 10MG": { "dose": "10mg", "unit": "tablets" },
-    "INTUNIV XR 1MG": { "dose": "1mg", "unit": "tablets" },
-    "DAYVIGO 5MG": { "dose": "5mg", "unit": "tablets" },
-    "DAYVIGO 10MG": { "dose": "10mg", "unit": "tablets" },
-    "QUVIVIQ 50MG": { "dose": "50mg", "unit": "tablets" },
-    "CONCERTA 54MG": { "dose": "54mg", "unit": "tablets" },
-    "APO-METHYLPHENIDATE SR 20MG": { "dose": "20mg", "unit": "tablets" },
-    "APO-METHYLPHENIDATE ER 36MG": { "dose": "36mg", "unit": "tablets" },
-    "Sandoz-ATOMOXETINE 10MG": { "dose": "10mg", "unit": "tablets" },
-    "Sandoz-ATOMOXETINE 25MG": { "dose": "25mg", "unit": "tablets" },
-    "Sandoz-ATOMOXETINE 40MG": { "dose": "40mg", "unit": "tablets" },
-    "PMS-METHYLPHENIDATE 10MG": { "dose": "10mg", "unit": "tablets" },
-    "PMS-METHYLPHENIDATE 20MG": { "dose": "20mg", "unit": "tablets" },
-    "PMS-METHYLPHENIDATE CR 20MG": { "dose": "20mg", "unit": "tablets" },
-    "PMS-METHYLPHENIDATE CR 30MG": { "dose": "30mg", "unit": "tablets" },
-    "PSM-ZOLPIDEM ODT 5MG": { "dose": "5mg", "unit": "tablets" },
-    "AURO-ZIPRASIDONE 20MG": { "dose": "20mg", "unit": "tablets" },
     "VYVANSE 20MG": { "dose": "20mg", "unit": "tablets" },
     "VYVANSE 40MG": { "dose": "40mg", "unit": "tablets" },
-    "ADDERALL 30MG": { "dose": "30mg", "unit": "tablets" },
-    "DEXEDRINE 10MG ER": { "dose": "10mg", "unit": "Capsules" },
-    "PRO-RISPERIDONE 1MG": { "dose": "1mg", "unit": "tablets" },
     "Sizodon MD 0.5": { "dose": "0.5mg", "unit": "tablets" },
-    "Solian 50mg": { "dose": "50mg", "unit": "tablets" },
-    "SPRAVATO": { "dose": "12mg", "unit": "sprays" },
-    "MED-CYPROTERONE 50MG": { "dose": "50mg", "unit": "tablets" }
+    "Solian 50mg": { "dose": "50mg", "unit": "tablets" }
+
   },
   "log items": [
     "Sleep Session",
     "Observations/Side Effects",
-    "Assessment Log",
-    "Insight/Theory",
-    "Treatment Plan"
-  ],
-  "supplementDefaults": [
-  "Nutricost, Alpha GPC, 600 mg",
-  "Nutricost, CDP Choline, 300 mg",
-  "Nutricost, L-Phenylalanine, 500 mg",
-  "Nutricost, Resveratrol, 700 mg",
-  "Webber Naturals Vitamin K2 with D3 120 mcg/1000 IU",
-  "Webber Naturals Alpha-Lipoic Acid, 100mg",
-  "Webber Naturals Quercetin 500 mg",
-  "NOW Foods, Glutathione, 500 mg",
-  "NOW Foods, Dopa Mucuna",
-  "NOW Foods, Acetyl-L-Carnitine, 500 mg",
-  "NOW Foods, Magtein®, 2,000 mg (Bedtime)",
-  "NOW Foods, Psyllium Husk Caps, 500 mg",
-  "NOW Foods, Ashwagandha, Standardized Extract, 450 mg",
-  "NOW Foods, Glycine, 1,000 mg",
-  "NOW Foods, Alpha Lipoic Acid, 250 mg",
-  "NOW Foods, Ascorbyl Palmitate, 500 mg", 
-  "Source Naturals, N-Acetyl L-Tyrosine, 300 mg",
-  "Organika Premium Royal Jelly 500mg",
-  "Orange Naturals Magnesium Glycinate 200mg (Bedtime)",
-  "Jamieson B100 Complex Ultra Strength Timed Release",
-  "Nature's Bounty Melatonin Gummies (Bedtime)",
-  "Webber Naturals® Triple Strength Omega-3, 900 mg",
-  "California Gold Nutrition, L-Glutathione (Reduced), 500 mg" 
-]
+    "Insight/Theory"
+  ]
 }
 ```
 
