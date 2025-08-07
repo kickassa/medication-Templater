@@ -2,10 +2,8 @@
 {
   "medDefaults": {
     "ODB Formulary": {
-      "TRINTELLIX 5MG": { "dose": "5mg", "unit": "tablets" },
-      "TRINTELLIX 10MG": { "dose": "10mg", "unit": "tablets" },
-      "VYVANSE 20MG": { "dose": "20mg", "unit": "tablets" },
-      "VYVANSE 40MG": { "dose": "40mg", "unit": "tablets" }
+      "Vyvanse (Brand)": { "Formulations": ["40mg Capsule", "60mg Capsule"] },
+      "Trintellix (Brand)": { "Formulations": ["5mg Tablet", "10mg Tablet"] }
     },
     "IndiaMART": [
       "SIZODON® MD 0.5",
