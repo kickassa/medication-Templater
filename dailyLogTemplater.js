@@ -3,8 +3,8 @@ async function main() {
 /* ------------------------------------------------
    1) Load external JSON config
 ------------------------------------------------ */
-const cfgFile = tp.file.find_tfile("MedicationData");
-if (!cfgFile) throw new Error("MedicationData note not found");
+const cfgFile = tp.file.find_tfile("dailyLogConfig");
+if (!cfgFile) throw new Error("dailyLogConfig note not found");
 const raw = (await app.vault.read(cfgFile))
   .replace(/^```json\s*/m, "")
   .replace(/^```/m, "")
@@ -93,18 +93,23 @@ if (firstPick === "Medication") {
   noteContent = noteContent.replace(/\n+$/, "\n\n");
 
   const selected = [];
-  const medNames = Object.keys(medDefaults);
+  const categories = Object.keys(medDefaults);
   while (true) {
-    const medChoice = await tp.system.suggester(medNames, medNames);
-    const qtyInput  = await tp.system.prompt("Quantity (dec / fraction)", "1");
-    const qty       = parseQty(qtyInput);
+    const catChoice = await tp.system.suggester(categories, categories);
+    const medGroup = medDefaults[catChoice];
+    const meds = Array.isArray(medGroup) ? medGroup : Object.keys(medGroup);
+    const medChoice = await tp.system.suggester(meds, meds);
     let entry = medChoice;
-    if (qty !== 1 && !isNaN(qty) && qty !== 0) {
-      const { dose, unit } = medDefaults[medChoice];
-      entry = `${medChoice} (${dose} x ${qty} ${unit})`;
+    if (!Array.isArray(medGroup)) {
+      const qtyInput = await tp.system.prompt("Quantity (dec / fraction)", "1");
+      const qty = parseQty(qtyInput);
+      if (qty !== 1 && !isNaN(qty) && qty !== 0) {
+        const { dose, unit } = medGroup[medChoice];
+        entry = `${medChoice} (${dose} x ${qty} ${unit})`;
+      }
     }
     selected.push(entry);
-    const act = await tp.system.suggester(["Add more","Done"],["Add more","Done"]);
+    const act = await tp.system.suggester(["Add more", "Done"], ["Add more", "Done"]);
     if (act === "Done") break;
   }
 
