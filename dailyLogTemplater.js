@@ -81,7 +81,7 @@ let noteContent   = tp.file.content;
 /* ------------------------------------------------
    4) Build menu hierarchy
 ------------------------------------------------ */
-const mainMenu = ["Medication", "Sleep Session", "Other Logs"];
+const mainMenu = ["Medication", "Sleep Session", "Other Logs", "Weekly Plan"];
 const firstPick = await tp.system.suggester(mainMenu, mainMenu);
 
 /* ------------------------------------------------
@@ -162,7 +162,48 @@ if (firstPick === "Sleep Session") {
 }
 
 /* ------------------------------------------------
-   7) Other Logs sub‑menu
+   7) Weekly Plan heading
+------------------------------------------------ */
+if (firstPick === "Weekly Plan") {
+  const headingRegex = /^### (\d{4}-\d{2}-\d{2})/gm;
+  let match, lastDateStr;
+  while ((match = headingRegex.exec(noteContent)) !== null) {
+    lastDateStr = match[1];
+  }
+  if (!lastDateStr) throw new Error("No date heading found.");
+  const lastDate = moment(lastDateStr, "YYYY-MM-DD");
+  const startDate = lastDate.clone().add(1, 'day');
+  let endDate, weekLabel;
+  if (lastDate.isoWeekday() === 7) {
+    endDate = startDate.clone().endOf('isoWeek');
+    weekLabel = startDate.isoWeek().toString();
+  } else {
+    const choice = await tp.system.suggester([
+      "Remainder of this week",
+      "Remainder + next week"
+    ], [
+      "Remainder of this week",
+      "Remainder + next week"
+    ]);
+    if (choice === "Remainder of this week") {
+      endDate = startDate.clone().endOf('isoWeek');
+      weekLabel = startDate.isoWeek().toString();
+    } else {
+      endDate = startDate.clone().endOf('isoWeek').add(1, 'week');
+      const startWeek = startDate.isoWeek();
+      const endWeek = endDate.isoWeek();
+      weekLabel = startWeek === endWeek ? `${startWeek}` : `${startWeek}-${endWeek}`;
+    }
+  }
+  const days = endDate.diff(startDate, 'days') + 1;
+  const heading = `# Week ${weekLabel}: ${startDate.format("MMM D")} - ${endDate.format("MMM D, YYYY")} (${days} days)`;
+  noteContent = noteContent.replace(/\n+$/, "\n\n") + heading + "\n";
+  await saveContent();
+  return;
+}
+
+/* ------------------------------------------------
+   8) Other Logs sub‑menu
 ------------------------------------------------ */
 if (firstPick === "Other Logs") {
   if (!logItems.length) throw new Error("No custom log items defined.");
