@@ -25,7 +25,6 @@
     ]
   },
   "log items": [
-    "Sleep Session",
     "Observations/Side Effects",
     "Insight/Theory"
   ]
