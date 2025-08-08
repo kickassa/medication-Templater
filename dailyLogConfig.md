@@ -15,6 +15,12 @@
           "5mg Sublingual Tablet",
           "10mg Sublingual Tablet"
         ]
+      },
+      "Apo-Guanfacine XR (Generic)": {
+        "Formulations": [
+          "1mg Extended Release Tablet",
+          "2mg Extended Release Tablet"
+        ]
       }
     },
     "IndiaMART": [
