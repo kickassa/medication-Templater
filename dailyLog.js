@@ -207,11 +207,22 @@ if (firstPick === "Weekly Plan") {
 ------------------------------------------------ */
 if (firstPick === "Other Logs") {
   if (!logItems.length) throw new Error("No custom log items defined.");
+
   const pick = await tp.system.suggester(logItems, logItems);
+
   ensureTodaysHeading();
   noteContent = noteContent.replace(/\n+$/, "\n\n");
-  const nowRaw = tp.date.now("HH:mm");
-  noteContent += `${nowRaw} ${getTimeDescription(nowRaw)}\n   ${pick}:\n`;
+
+  const timeMode = await tp.system.suggester(["Now","Pick a TimeDescription"],["Now","Pick a TimeDescription"]);
+  let headingLine;
+  if (timeMode === "Now") {
+    const nowRaw = tp.date.now("HH:mm");
+    headingLine = `${nowRaw} ${getTimeDescription(nowRaw)}`;
+  } else {
+    headingLine = await tp.system.suggester(pickerLabels, pickerLabels);
+  }
+
+  noteContent += `${headingLine}\n   ${pick}:\n`;
   await saveContent();
   return;
 }
